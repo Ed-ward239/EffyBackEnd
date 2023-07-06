@@ -13,7 +13,7 @@ const config = {
 sql.connect(config).then(() => {
     console.log('Connected to the DB :)');
     // DB operations here
-    const query = 'SELECT * FROM [dbo].[Carnival]';
+    const query = 'SELECT * FROM [dbo].[CarnivalDB]';
 
     sql.query(query).then((result) => {
         console.log('Query result:', result.recordset);
