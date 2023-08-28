@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "effysql1.cudlgss5lr6m.us-east-2.rds.amazonaws.com",
     PORT: "1434",
     USER: "shipacctportaldev",
     PASSWORD: "BFXTczfjG+TbeG%!",

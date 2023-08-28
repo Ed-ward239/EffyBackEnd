@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
         statusPaid: {
             type: Sequelize.STRING
         },
-        editedBy: {
+        editor: {
             type: Sequelize.STRING
         },
         revSS: {
