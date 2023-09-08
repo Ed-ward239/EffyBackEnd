@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const db = require("./models");
 
 var corsOptions = {
     origin: "http://localhost:8081"
@@ -13,6 +14,8 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}));
+
+db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
