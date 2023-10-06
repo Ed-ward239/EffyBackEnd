@@ -1,14 +1,28 @@
+'use strict';
+
+const dotenv = require('dotenv');
+const assert = require('assert');
+
+dotenv.config();
+
+const {PORT, HOST, HOST_URL, SQL_USER, SQL_PASSWORD, SQL_DATABASE, SQL_SERVER} = process.env;
+
+const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
+assert(PORT, "Missing PORT");
+assert(HOST, 'Missing HOST');
+
 module.exports = {
-    HOST: "effysql1.cudlgss5lr6m.us-east-2.rds.amazonaws.com",
-    PORT: "1433",
-    USER: "shipacctportaldev",
-    PASSWORD: "BFXTczfjG+TbeG%!",
-    DB: "EffyShipAcctPortalDevDB",
-    dialect: "mssql",
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
+    port: PORT,
+    host: HOST,
+    url: HOST_URL,
+    sql: {
+        server: SQL_SERVER,
+        database: SQL_DATABASE,
+        user: SQL_USER,
+        password: SQL_PASSWORD,
+        options: {
+            encrypt: sqlEncrypt,
+            enableArithAbort: true
+        },
+    },
 };
