@@ -1,13 +1,11 @@
+const db = require("./models");
+const controller = require("./controllers/controller")
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const db = require("./models");
+var bodyParser = require('body-parser');
 
-var corsOptions = {
-    origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 // parse requests of content-type - application/jason
 app.use(express.json());
@@ -19,11 +17,12 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({message: "Welcome to EffyBackEnd"});
+    let data = {...req.body}
+    controller.getAllData(data).then(resp => res.json(resp));
 });
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}.`);
 });
